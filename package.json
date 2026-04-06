@@ -1,0 +1,11 @@
+{
+  "name": "ecommerce-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "frontend:install": "cd frontend && npm install",
+    "backend:install": "cd backend && npm install",
+    "install-all": "npm run frontend:install && npm run backend:install",
+    "build": "cd frontend && npm install && npm run build"
+  }
+}

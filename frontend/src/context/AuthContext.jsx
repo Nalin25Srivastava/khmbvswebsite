@@ -1,10 +1,10 @@
+import React from 'react';
 import API from '../api/api';
-// import axios from 'axios';
 
-export const AuthContext = createContext();
+export const AuthContext = React.createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [userInfo, setUserInfo] = useState(
+  const [userInfo, setUserInfo] = React.useState(
     localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null
   );
 

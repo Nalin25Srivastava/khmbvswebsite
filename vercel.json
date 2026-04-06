@@ -7,8 +7,16 @@
       "destination": "/api/index.js"
     },
     {
+      "source": "/assets/(.*)",
+      "destination": "/frontend/build/assets/$1"
+    },
+    {
+      "source": "/images/(.*)",
+      "destination": "/frontend/build/images/$1"
+    },
+    {
       "source": "/((?!api|assets|images|favicon.ico).*)",
-      "destination": "/index.html"
+      "destination": "/frontend/build/index.html"
     }
   ],
   "functions": {

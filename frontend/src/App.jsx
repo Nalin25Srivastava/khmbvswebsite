@@ -8,6 +8,7 @@ import ProductDetailsPage from './pages/ProductDetailsPage'
 import { AuthProvider } from './context/AuthContext'
 import { CartProvider } from './context/CartContext'
 import CartPage from './pages/CartPage'
+import CheckoutPage from './pages/CheckoutPage'
 
 import { GoogleOAuthProvider } from '@react-oauth/google'
 
@@ -28,6 +29,7 @@ function App() {
                   <Route path="/signup" element={<SignupPage />} />
                   <Route path="/product/:id" element={<ProductDetailsPage />} />
                   <Route path="/cart" element={<CartPage />} />
+                  <Route path="/checkout" element={<CheckoutPage />} />
                 </Routes>
               </main>
             </div>

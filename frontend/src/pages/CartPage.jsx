@@ -97,9 +97,9 @@ const CartPage = () => {
                                 <span>₹{totalPrice.toFixed(2)}</span>
                             </div>
                         </div>
-                        <button className="btn-premium w-full checkout-btn">
+                        <Link to="/checkout" className="btn-premium w-full checkout-btn" style={{ textDecoration: 'none' }}>
                             Proceed to Checkout <ArrowRight size={20} />
-                        </button>
+                        </Link>
                         <p className="secure-checkout-text">
                             Secure Checkout Guaranteed
                         </p>

@@ -46,7 +46,7 @@ const HomePage = () => {
         ) : (
           products.map(product => (
             <Link key={product._id || product.id} to={`/product/${product._id}`} className="product-card glass-morphism" style={{ textDecoration: 'none', color: 'inherit' }}>
-              <img src={product.image} alt={product.name} className="product-image" />
+              <img src={product.image} alt={product.name} className="product-image" loading="lazy" />
               <div className="product-info">
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
                   <span style={{ fontSize: '0.75rem', color: 'var(--primary-color)', textTransform: 'uppercase', fontWeight: '700' }}>

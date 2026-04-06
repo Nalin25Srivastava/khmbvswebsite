@@ -9,7 +9,9 @@ const getProducts = async (req, res) => {
   }
 
   try {
-    const products = await Product.find({}).maxTimeMS(5000);
+    const products = await Product.find({})
+      .select('name price image brand rating countInStock')
+      .maxTimeMS(5000);
     res.json(products);
   } catch (err) {
     res.status(500).json({ message: 'Error fetching products', error: err.message });

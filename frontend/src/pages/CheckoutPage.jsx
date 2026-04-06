@@ -2,7 +2,8 @@ import React, { useState, useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CartContext } from '../context/CartContext'
 import { AuthContext } from '../context/AuthContext'
-import axios from 'axios'
+import API from '../api/api'
+// import axios from 'axios'
 import { MapPin, CreditCard, Banknote, ShieldCheck, ArrowLeft, Loader2 } from 'lucide-react'
 
 const CheckoutPage = () => {
@@ -40,7 +41,7 @@ const CheckoutPage = () => {
                 },
             }
 
-            const { data } = await axios.post(
+            const { data } = await API.post(
                 '/api/orders',
                 {
                     orderItems: cartItems.map(item => ({

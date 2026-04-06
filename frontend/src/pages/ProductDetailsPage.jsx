@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import API from '../api/api';
+// import axios from 'axios';
 import { Star, ChevronLeft, ShoppingCart, Check, ShieldCheck, Truck } from 'lucide-react';
 import { AuthContext } from '../context/AuthContext';
 import { CartContext } from '../context/CartContext';
@@ -23,7 +24,7 @@ const ProductDetailsPage = () => {
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const { data } = await axios.get(`/api/products/${id}`);
+                const { data } = await API.get(`/api/products/${id}`);
                 setProduct(data);
                 setCurrentImage(data.image);
                 if (data.flavors && data.flavors.length > 0) {

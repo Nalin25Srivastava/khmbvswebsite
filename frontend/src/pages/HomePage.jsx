@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import API from '../api/api'
 import { ArrowRight, ShoppingCart, Loader2, Star } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
@@ -11,7 +11,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const { data } = await axios.get('/api/products')
+        const { data } = await API.get('/api/products')
         setProducts(data)
         setLoading(false)
       } catch (err) {

@@ -13,7 +13,7 @@ const products = [
     description: 'Highly effective dishwashing liquid that removes tough grease and stains effortlessly.',
     brand: 'KHMBVS',
     category: 'Cleaning',
-    price: 99,
+    price: 60,
     countInStock: 20,
     rating: 4.5,
     numReviews: 12,
@@ -22,7 +22,7 @@ const products = [
       { name: 'Aloe Vera', image: '/images/aloevera.png' }
     ],
     quantities: [
-      { size: '1L', price: 99 },
+      { size: '1L', price: 60 },
       { size: '2L', price: 100 }
     ],
   },

@@ -13,15 +13,21 @@ connectDB();
 // Middleware
 app.use(cors({
   origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl)
     if (!origin) return callback(null, true);
     
-    const allowedOrigins = process.env.FRONTEND_URL ? process.env.FRONTEND_URL.split(',') : [];
-    const isVercelPreview = origin.endsWith('.vercel.app');
+    // Normalize origins for comparison by removing trailing slashes
+    const normalize = (url) => url.replace(/\/$/, "");
+    const allowedOrigins = process.env.FRONTEND_URL 
+      ? process.env.FRONTEND_URL.split(',').map(normalize) 
+      : [];
     
-    if (allowedOrigins.includes(origin) || isVercelPreview || process.env.NODE_ENV !== 'production') {
+    const normalizedOrigin = normalize(origin);
+    const isVercelPreview = normalizedOrigin.endsWith('.vercel.app');
+    
+    if (allowedOrigins.includes(normalizedOrigin) || isVercelPreview || process.env.NODE_ENV !== 'production') {
       callback(null, true);
     } else {
+      console.warn(`CORS blocked for origin: ${origin}`);
       callback(new Error('Not allowed by CORS'));
     }
   },
@@ -39,6 +45,14 @@ apiRouter.use('/orders', require('./routes/order'));
 app.use('/api', apiRouter); 
 app.use('/', apiRouter); 
 
+// Health Check
+app.get('/api/health', (req, res) => {
+  res.json({ 
+    status: 'ok', 
+    env: process.env.NODE_ENV,
+    frontend: process.env.FRONTEND_URL 
+  });
+});
 // Routes
 app.get('/', (req, res) => {
   res.send('API is running...');

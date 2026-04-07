@@ -37,7 +37,7 @@ const CartPage = () => {
             <div className="cart-grid">
                 <div className="cart-items-section">
                     {cartItems.map((item) => (
-                        <div key={`${item._id}-${item.flavor?.name}`} className="cart-item-card glass-morphism">
+                        <div key={`${item._id}-${item.flavor?.name}-${item.selectedSize}`} className="cart-item-card glass-morphism">
                             <div className="item-image-wrapper">
                                 <img src={item.flavor?.image || item.image} alt={item.name} />
                             </div>
@@ -45,22 +45,25 @@ const CartPage = () => {
                                 <div className="item-details">
                                     <span className="item-brand">{item.brand}</span>
                                     <h3>{item.name}</h3>
-                                    {item.flavor && <span className="item-variant">Flavor: {item.flavor.name}</span>}
+                                    <div className="item-variants">
+                                        {item.flavor && <span className="item-variant">Flavor: {item.flavor.name}</span>}
+                                        {item.selectedSize && <span className="item-variant">Size: {item.selectedSize}</span>}
+                                    </div>
                                 </div>
                                 <div className="item-pricing">
                                     <span className="item-price">₹{item.price}</span>
                                     <div className="quantity-controls glass-morphism">
-                                        <button onClick={() => updateQuantity(item._id, item.flavor?.name, item.qty - 1)}>
+                                        <button onClick={() => updateQuantity(item._id, item.flavor?.name, item.selectedSize, item.qty - 1)}>
                                             <Minus size={16} />
                                         </button>
                                         <span className="qty">{item.qty}</span>
-                                        <button onClick={() => updateQuantity(item._id, item.flavor?.name, item.qty + 1)}>
+                                        <button onClick={() => updateQuantity(item._id, item.flavor?.name, item.selectedSize, item.qty + 1)}>
                                             <Plus size={16} />
                                         </button>
                                     </div>
                                     <button 
                                         className="btn-remove" 
-                                        onClick={() => removeFromCart(item._id, item.flavor?.name)}
+                                        onClick={() => removeFromCart(item._id, item.flavor?.name, item.selectedSize)}
                                         title="Remove item"
                                     >
                                         <Trash2 size={18} />

@@ -47,7 +47,10 @@ const productSchema = new mongoose.Schema({
     }
   ],
   quantities: [
-    { type: String, required: true }
+    { 
+      size: { type: String, required: true }, 
+      price: { type: Number, required: true } 
+    }
   ],
 }, {
   timestamps: true,

@@ -21,7 +21,10 @@ const products = [
       { name: 'Lemon', image: '/images/dishwash.png' },
       { name: 'Aloe Vera', image: '/images/aloevera.png' }
     ],
-    quantities: ['500ml', '1L', '2L'],
+    quantities: [
+      { size: '1L', price: 99 },
+      { size: '2L', price: 100 }
+    ],
   },
   {
     name: 'Multi-Surface Floor Cleaner',
@@ -34,7 +37,10 @@ const products = [
     rating: 4.0,
     numReviews: 8,
     flavors: [],
-    quantities: ['1L', '5L'],
+    quantities: [
+      { size: '1L', price: 149 },
+      { size: '5L', price: 699 }
+    ],
   },
   {
     name: 'Gentle Handwash',
@@ -47,7 +53,10 @@ const products = [
     rating: 4.8,
     numReviews: 20,
     flavors: [],
-    quantities: ['250ml', '500ml'],
+    quantities: [
+      { size: '250ml', price: 79 },
+      { size: '500ml', price: 129 }
+    ],
   },
   {
     name: 'Harpic Toilet Cleaner',
@@ -60,7 +69,10 @@ const products = [
     rating: 4.2,
     numReviews: 15,
     flavors: [],
-    quantities: ['500ml', '1L'],
+    quantities: [
+      { size: '500ml', price: 129 },
+      { size: '1L', price: 219 }
+    ],
   },
   {
     name: 'Natural Fresh Soaps',
@@ -73,7 +85,10 @@ const products = [
     rating: 4.7,
     numReviews: 25,
     flavors: [],
-    quantities: ['Set of 3', 'Set of 6'],
+    quantities: [
+      { size: 'Set of 3', price: 199 },
+      { size: 'Set of 6', price: 349 }
+    ],
   },
 ];
 

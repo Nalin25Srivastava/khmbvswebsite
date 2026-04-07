@@ -15,12 +15,17 @@ export const CartProvider = ({ children }) => {
     const addToCart = (product, quantity, flavor) => {
         setCartItems((prevItems) => {
             const existingItem = prevItems.find(
-                (item) => item._id === product._id && item.flavor?.name === flavor?.name
+                (item) => 
+                    item._id === product._id && 
+                    item.flavor?.name === flavor?.name &&
+                    item.selectedSize === product.selectedSize
             );
 
             if (existingItem) {
                 return prevItems.map((item) =>
-                    item._id === product._id && item.flavor?.name === flavor?.name
+                    item._id === product._id && 
+                    item.flavor?.name === flavor?.name &&
+                    item.selectedSize === product.selectedSize
                         ? { ...item, qty: item.qty + quantity }
                         : item
                 );
@@ -29,17 +34,19 @@ export const CartProvider = ({ children }) => {
         });
     };
 
-    const removeFromCart = (id, flavorName) => {
+    const removeFromCart = (id, flavorName, size) => {
         setCartItems((prevItems) => 
-            prevItems.filter((item) => !(item._id === id && item.flavor?.name === flavorName))
+            prevItems.filter((item) => 
+                !(item._id === id && item.flavor?.name === flavorName && item.selectedSize === size)
+            )
         );
     };
 
-    const updateQuantity = (id, flavorName, qty) => {
+    const updateQuantity = (id, flavorName, size, qty) => {
         if (qty < 1) return;
         setCartItems((prevItems) =>
             prevItems.map((item) =>
-                item._id === id && item.flavor?.name === flavorName
+                item._id === id && item.flavor?.name === flavorName && item.selectedSize === size
                     ? { ...item, qty }
                     : item
             )

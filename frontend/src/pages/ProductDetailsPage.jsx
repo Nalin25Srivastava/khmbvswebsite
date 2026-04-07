@@ -17,7 +17,7 @@ const ProductDetailsPage = () => {
     const [error, setError] = useState(null);
 
     const [selectedFlavor, setSelectedFlavor] = useState(null);
-    const [selectedQuantity, setSelectedQuantity] = useState(1);
+    const [selectedQuantity, setSelectedQuantity] = useState(null);
     const [currentImage, setCurrentImage] = useState('');
     const [isAdded, setIsAdded] = useState(false);
 
@@ -31,7 +31,9 @@ const ProductDetailsPage = () => {
                     setSelectedFlavor(data.flavors[0]);
                     setCurrentImage(data.flavors[0].image);
                 }
-                setSelectedQuantity(1);
+                if (data.quantities && data.quantities.length > 0) {
+                    setSelectedQuantity(data.quantities[0]);
+                }
                 setLoading(false);
             } catch (err) {
                 setError(err.response?.data?.message || err.message);
@@ -47,7 +49,13 @@ const ProductDetailsPage = () => {
     };
 
     const handleAddToCart = () => {
-        addToCart(product, selectedQuantity, selectedFlavor);
+        // Create a product object that includes the specific size's price
+        const productToCart = {
+            ...product,
+            price: selectedQuantity.price,
+            selectedSize: selectedQuantity.size
+        };
+        addToCart(productToCart, 1, selectedFlavor);
         setIsAdded(true);
         setTimeout(() => setIsAdded(false), 2000);
     };
@@ -83,7 +91,7 @@ const ProductDetailsPage = () => {
                     </div>
 
                     <div className="price-row">
-                        <span className="price">₹{product.price}</span>
+                        <span className="price">₹{selectedQuantity ? selectedQuantity.price : product.price}</span>
                         {product.countInStock > 0 ? (
                             <span className="stock-status in-stock">In Stock</span>
                         ) : (
@@ -117,11 +125,11 @@ const ProductDetailsPage = () => {
                             <div className="variant-options">
                                 {product.quantities.map((q) => (
                                     <button
-                                        key={q}
-                                        className={`variant-btn ${selectedQuantity === q ? 'active' : ''}`}
+                                        key={q.size}
+                                        className={`variant-btn ${selectedQuantity?.size === q.size ? 'active' : ''}`}
                                         onClick={() => setSelectedQuantity(q)}
                                     >
-                                        {q}
+                                        {q.size}
                                     </button>
                                 ))}
                             </div>

@@ -9,7 +9,7 @@ dotenv.config();
 const products = [
   {
     name: 'Premium Dishwash',
-    image: '/images/dishwash.png',
+    image: '/images/lemon.png',
     description: 'Highly effective dishwashing liquid that removes tough grease and stains effortlessly.',
     brand: 'KHMBVS',
     category: 'Cleaning',
@@ -18,7 +18,7 @@ const products = [
     rating: 4.5,
     numReviews: 12,
     flavors: [
-      { name: 'Lemon', image: '/images/dishwash.png' },
+      { name: 'Lemon', image: '/images/lemon.png' },
       { name: 'Aloe Vera', image: '/images/aloevera.png' }
     ],
     quantities: [

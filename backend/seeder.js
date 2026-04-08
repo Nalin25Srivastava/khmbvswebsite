@@ -44,7 +44,7 @@ const products = [
   },
   {
     name: 'Gentle Handwash',
-    image: '/images/handwash.png',
+    image: '/images/orange.png',
     description: 'Keep your hands soft and germ-free with our gentle yet effective handwash.',
     brand: 'KHMBVS',
     category: 'Hygiene',

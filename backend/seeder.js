@@ -28,7 +28,7 @@ const products = [
   },
   {
     name: 'Multi-Surface Floor Cleaner',
-    image: '/images/floor claner.png',
+    image: '/images/floor.jpg',
     description: 'Leave your floors sparkling clean and fresh with this multi-surface floor cleaner.',
     brand: 'KHMBVS',
     category: 'Cleaning',
